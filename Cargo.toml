@@ -9,4 +9,10 @@ description = "HTTP client for Exante REST API version 3.0"
 [dependencies]
 rustify = "0.5.3"
 http = "0.2.9"
+rustify_derive = "0.5.2"
 base64 = "0.21.5"
+serde = "1.0.190"
+derive-new = "0.5.9"
+
+[dev-dependencies]
+tokio = {  version = "1.33.0", features = ["rt", "macros"] }
