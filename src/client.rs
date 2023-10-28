@@ -1,5 +1,7 @@
 use crate::middleware::Middle;
 use rustify::clients::reqwest::Client as HTTPClient;
+use rustify::errors::ClientError;
+use rustify::Endpoint;
 
 /// Exante account type.
 pub enum AccountType {
@@ -28,11 +30,15 @@ impl Client {
         }
     }
 
-    pub fn http(&self) -> &HTTPClient {
-        &self.http
-    }
-
-    pub fn middle(&self) -> &Middle {
-        &self.middle
+    /// Executes endpoint.
+    pub async fn execute<E>(&self, endpoint: E) -> Result<<E as Endpoint>::Response, ClientError>
+    where
+        E: Endpoint,
+    {
+        endpoint
+            .with_middleware(&self.middle)
+            .exec(&self.http)
+            .await?
+            .parse()
     }
 }
