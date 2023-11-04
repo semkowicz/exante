@@ -1,4 +1,4 @@
-use exante::api::account_summary::requests::GetAccountSummary;
+use exante::api::account_summary::requests::{GetAccountSummary, GetAccountSummaryByDate};
 use exante::api::accounts::requests::GetUserAccounts;
 use exante::api::cross_rates::requests::{GetAvailableCurrencies, GetCrossRate};
 use exante::client::*;
@@ -37,7 +37,12 @@ async fn get_account_summary() {
     let accounts = client.execute(GetUserAccounts::new()).await.unwrap();
     let account_id = accounts.get(0).unwrap().account_id.to_owned();
 
-    let endpoint = GetAccountSummary::new(account_id, "USD".to_owned());
+    let endpoint = GetAccountSummary::new(account_id.clone(), "USD".to_owned());
+    let summary = client.execute(endpoint).await.unwrap();
+    println!("{summary:?}");
+
+    let endpoint =
+        GetAccountSummaryByDate::new(account_id, "2023-01-01".to_owned(), "USD".to_owned());
     let summary = client.execute(endpoint).await.unwrap();
     println!("{summary:?}");
 }
