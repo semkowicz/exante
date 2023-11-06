@@ -1,6 +1,7 @@
 use exante::api::account_summary::requests::{GetAccountSummary, GetAccountSummaryByDate};
 use exante::api::accounts::requests::GetUserAccounts;
 use exante::api::cross_rates::requests::{GetAvailableCurrencies, GetCrossRate};
+use exante::api::transactions::requests::{GetTransactions, Order};
 use exante::client::*;
 
 static EXANTE_API_KEY: &str = "";
@@ -45,4 +46,23 @@ async fn get_account_summary() {
         GetAccountSummaryByDate::new(account_id, "2023-01-01".to_owned(), "USD".to_owned());
     let summary = client.execute(endpoint).await.unwrap();
     println!("{summary:?}");
+}
+
+#[tokio::test]
+async fn get_transactions() {
+    let client = create_client();
+    let accounts = client.execute(GetUserAccounts::new()).await.unwrap();
+    let account_id = accounts.get(0).unwrap().account_id.to_owned();
+
+    let mut get_transactions = GetTransactions::new();
+    get_transactions.filter_account_id(account_id);
+    get_transactions.limit(3);
+    get_transactions.filter_from_date("2020-01-01".to_owned());
+    get_transactions.order(Order::Ascending);
+
+    let transactions = client.execute(get_transactions).await.unwrap();
+
+    for t in transactions {
+        println!("{:?}", t);
+    }
 }
