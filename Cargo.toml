@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["Daniel Semkowicz <daniel@semkowicz.pl>"]
 license = "MIT OR Apache-2.0"
 description = "HTTP client for Exante REST API version 3.0"
+repository = "https://github.com/semkowicz/exante"
 
 [dependencies]
 rustify = "0.5.3"
