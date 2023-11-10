@@ -2,6 +2,7 @@ use http::HeaderValue;
 use rustify::errors::ClientError;
 use rustify::{Endpoint, MiddleWare};
 
+#[derive(Clone)]
 pub struct Middle {
     credentials: HeaderValue,
 }

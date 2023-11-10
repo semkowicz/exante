@@ -16,6 +16,21 @@ pub struct Client {
     middle: Middle,
 }
 
+impl Clone for Client {
+    fn clone(&self) -> Self {
+        // Rustify Client does not implement Clone.
+        let http_client = HTTPClient {
+            http: self.http.http.clone(),
+            base: self.http.base.clone(),
+        };
+
+        Self {
+            http: http_client,
+            middle: self.middle.clone(),
+        }
+    }
+}
+
 impl Client {
     /// Constructs a new client using provided account type and credentials.
     pub fn new(account_type: AccountType, api_key: &str, secret_key: &str) -> Self {
