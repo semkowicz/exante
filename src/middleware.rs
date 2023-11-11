@@ -3,12 +3,12 @@ use http::HeaderValue;
 use rustify::{Endpoint, MiddleWare};
 
 #[derive(Clone)]
-pub struct Middle {
+pub(crate) struct Middle {
     credentials: HeaderValue,
 }
 
 impl Middle {
-    pub fn new(api_key: &str, secret_key: &str) -> Self {
+    pub(crate) fn new(api_key: &str, secret_key: &str) -> Self {
         Self {
             credentials: basic_auth(api_key, secret_key),
         }
