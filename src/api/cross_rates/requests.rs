@@ -18,8 +18,10 @@ pub struct GetAvailableCurrencies {}
     response = "CrossRate"
 )]
 pub struct GetCrossRate {
+    /// From currency.
     #[endpoint(skip)]
-    from: String,
+    pub from: String,
+    /// To currency.
     #[endpoint(skip)]
-    to: String,
+    pub to: String,
 }

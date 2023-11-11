@@ -17,30 +17,42 @@ pub enum Order {
 #[endpoint(path = "md/3.0/transactions", response = "Vec<Transaction>")]
 #[serde(rename_all = "camelCase")]
 pub struct GetTransactions {
+    /// Filter by transaction UUID.
     #[endpoint(query)]
-    uuid: Option<String>,
+    pub uuid: Option<String>,
+    /// Filter by account ID.
     #[endpoint(query)]
-    account_id: Option<String>,
+    pub account_id: Option<String>,
+    /// Filter by financial instrument.
     #[endpoint(query)]
-    symbol_id: Option<String>,
+    pub symbol_id: Option<String>,
+    /// Filter by asset.
     #[endpoint(query)]
-    asset: Option<String>,
+    pub asset: Option<String>,
+    /// Transaction type or comma-separated list of transaction types to filter.
     #[endpoint(query)]
-    operation_type: Option<String>,
+    pub operation_type: Option<String>,
+    /// Offset to list transactions.
     #[endpoint(query)]
-    offset: Option<i64>,
+    pub offset: Option<i64>,
+    /// Limit response to this amount of transactions.
     #[endpoint(query)]
-    limit: Option<i64>,
+    pub limit: Option<i64>,
+    /// Order transactions by `Descending` or `Ascending`.
     #[endpoint(query)]
-    order: Option<Order>,
+    pub order: Option<Order>,
+    /// Filter transactions from date.
     #[endpoint(query)]
-    from_date: Option<String>,
+    pub from_date: Option<String>,
+    /// Filter transactions to date.
     #[endpoint(query)]
-    to_date: Option<String>,
+    pub to_date: Option<String>,
+    /// Filter by order ID.
     #[endpoint(query)]
-    order_id: Option<String>,
+    pub order_id: Option<String>,
+    /// Filter by the position in the order.
     #[endpoint(query)]
-    order_pos: Option<i64>,
+    pub order_pos: Option<i64>,
 }
 
 impl GetTransactions {
