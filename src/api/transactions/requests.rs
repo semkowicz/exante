@@ -1,5 +1,5 @@
-use crate::api::request::RequestBuilder;
 use crate::api::transactions::responses::Transaction;
+use crate::api::RequestBuilder;
 use rustify_derive::Endpoint;
 use serde::Serialize;
 

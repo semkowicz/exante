@@ -1,8 +1,8 @@
-use exante::api::account_summary::requests::{GetAccountSummary, GetAccountSummaryByDate};
-use exante::api::accounts::requests::GetUserAccounts;
-use exante::api::cross_rates::requests::{GetAvailableCurrencies, GetCrossRate};
-use exante::api::transactions::requests::{GetTransactions, Order};
-use exante::client::*;
+use exante::api::account_summary::{GetAccountSummary, GetAccountSummaryByDate};
+use exante::api::accounts::GetUserAccounts;
+use exante::api::cross_rates::{GetAvailableCurrencies, GetCrossRate};
+use exante::api::transactions::{GetTransactions, Order};
+use exante::{AccountType, Client};
 
 static EXANTE_API_KEY: &str = "";
 static EXANTE_SECRET_KEY: &str = "";
