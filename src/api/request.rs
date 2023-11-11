@@ -1,5 +1,4 @@
-use crate::client::Client;
-use rustify::errors::ClientError;
+use crate::{Client, ClientError};
 use rustify::Endpoint;
 
 /// A builder to construct a request.

@@ -4,8 +4,8 @@ use crate::api::cross_rates::{GetAvailableCurrencies, GetCrossRate};
 use crate::api::transactions::GetTransactions;
 use crate::api::RequestBuilder;
 use crate::middleware::Middle;
+use crate::ClientError;
 use rustify::clients::reqwest::Client as HTTPClient;
-use rustify::errors::ClientError;
 use rustify::Endpoint;
 
 /// Exante account type.
