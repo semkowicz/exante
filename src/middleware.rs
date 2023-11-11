@@ -1,5 +1,5 @@
+use crate::ClientError;
 use http::HeaderValue;
-use rustify::errors::ClientError;
 use rustify::{Endpoint, MiddleWare};
 
 #[derive(Clone)]
