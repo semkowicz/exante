@@ -1,8 +1,8 @@
-use crate::api::account_summary::requests::{GetAccountSummary, GetAccountSummaryByDate};
-use crate::api::accounts::requests::GetUserAccounts;
-use crate::api::cross_rates::requests::{GetAvailableCurrencies, GetCrossRate};
-use crate::api::request::RequestBuilder;
-use crate::api::transactions::requests::GetTransactions;
+use crate::api::account_summary::{GetAccountSummary, GetAccountSummaryByDate};
+use crate::api::accounts::GetUserAccounts;
+use crate::api::cross_rates::{GetAvailableCurrencies, GetCrossRate};
+use crate::api::transactions::GetTransactions;
+use crate::api::RequestBuilder;
 use crate::middleware::Middle;
 use rustify::clients::reqwest::Client as HTTPClient;
 use rustify::errors::ClientError;

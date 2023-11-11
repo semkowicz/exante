@@ -1,4 +1,4 @@
-use exante::client::{AccountType, Client};
+use exante::{AccountType, Client};
 
 static EXANTE_API_KEY: &str = "";
 static EXANTE_SECRET_KEY: &str = "";

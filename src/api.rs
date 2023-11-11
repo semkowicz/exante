@@ -3,3 +3,5 @@ pub mod accounts;
 pub mod cross_rates;
 pub mod request;
 pub mod transactions;
+
+pub use self::request::RequestBuilder;
