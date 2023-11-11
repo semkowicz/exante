@@ -55,10 +55,10 @@ async fn get_transactions() {
     let account_id = accounts.get(0).unwrap().account_id.to_owned();
 
     let mut get_transactions = GetTransactions::new();
-    get_transactions.filter_account_id(account_id);
-    get_transactions.limit(3);
-    get_transactions.filter_from_date("2020-01-01".to_owned());
-    get_transactions.order(Order::Ascending);
+    get_transactions.account_id = Some(account_id);
+    get_transactions.limit = Some(3);
+    get_transactions.from_date = Some("2020-01-01".to_owned());
+    get_transactions.order = Some(Order::Ascending);
 
     let transactions = client.execute(get_transactions).await.unwrap();
 

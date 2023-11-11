@@ -1,3 +1,4 @@
+use crate::api::request::RequestBuilder;
 use crate::api::transactions::responses::Transaction;
 use rustify_derive::Endpoint;
 use serde::Serialize;
@@ -73,64 +74,78 @@ impl GetTransactions {
             order_pos: None,
         }
     }
+}
 
+impl RequestBuilder<GetTransactions> {
     /// Filters transactions by transaction UUID.
-    pub fn filter_uuid(&mut self, uuid: String) {
-        self.uuid = Some(uuid);
+    pub fn filter_uuid(mut self, uuid: String) -> Self {
+        self.request_mut().uuid = Some(uuid);
+        self
     }
 
     /// Filters transactions by account ID.
-    pub fn filter_account_id(&mut self, account_id: String) {
-        self.account_id = Some(account_id);
+    pub fn filter_account_id(mut self, account_id: String) -> Self {
+        self.request_mut().account_id = Some(account_id);
+        self
     }
 
     /// Filters transactions by financial instrument symbol.
-    pub fn filter_symbol_id(&mut self, symbol_id: String) {
-        self.symbol_id = Some(symbol_id);
+    pub fn filter_symbol_id(mut self, symbol_id: String) -> Self {
+        self.request_mut().symbol_id = Some(symbol_id);
+        self
     }
 
     /// Filters transactions by asset.
-    pub fn filter_asset(&mut self, asset: String) {
-        self.asset = Some(asset);
+    pub fn filter_asset(mut self, asset: String) -> Self {
+        self.request_mut().asset = Some(asset);
+        self
     }
 
     /// Filters transactions by operation type.
-    pub fn filter_operation_type(&mut self, operation_type: String) {
-        self.operation_type = Some(operation_type);
+    pub fn filter_operation_type(mut self, operation_type: String) -> Self {
+        self.request_mut().operation_type = Some(operation_type);
+        self
     }
 
     /// Filters transactions from date.
-    pub fn filter_from_date(&mut self, date: String) {
-        self.from_date = Some(date);
+    pub fn filter_from_date(mut self, date: String) -> Self {
+        self.request_mut().from_date = Some(date);
+        self
     }
 
     /// Filters transactions to date.
-    pub fn filter_to_date(&mut self, date: String) {
-        self.to_date = Some(date);
+    pub fn filter_to_date(mut self, date: String) -> Self {
+        self.request_mut().to_date = Some(date);
+        self
     }
 
     /// Filters transactions by order ID.
-    pub fn filter_order_id(&mut self, order_id: String) {
-        self.order_id = Some(order_id);
+    pub fn filter_order_id(mut self, order_id: String) -> Self {
+        self.request_mut().order_id = Some(order_id);
+        self
     }
 
     /// Filters transactions by position in order.
-    pub fn filter_order_pos(&mut self, order_pos: i64) {
-        self.order_pos = Some(order_pos);
+    pub fn filter_order_pos(mut self, order_pos: i64) -> Self {
+        self.request_mut().order_pos = Some(order_pos);
+        self
     }
 
     /// Offset the list by this number of transactions.
-    pub fn offset(&mut self, offset: i64) {
-        self.offset = Some(offset);
+    pub fn offset(mut self, offset: i64) -> Self {
+        self.request_mut().offset = Some(offset);
+        self
     }
 
     /// Limit response to this number of transactions.
-    pub fn limit(&mut self, limit: i64) {
-        self.limit = Some(limit);
+    pub fn limit(mut self, limit: i64) -> Self {
+        self.request_mut().limit = Some(limit);
+        self
     }
 
     /// Sets the order in which the transaction list should be sorted.
-    pub fn order(&mut self, order: Order) {
-        self.order = Some(order);
+    pub fn order(mut self, order: Order) -> Self {
+        self.request_mut().order = Some(order);
+        self
     }
 }
