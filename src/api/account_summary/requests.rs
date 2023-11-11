@@ -11,10 +11,16 @@ use rustify_derive::Endpoint;
     response = "AccountSummary"
 )]
 pub struct GetAccountSummary {
+    /// Account ID to get summary.
+    ///
+    /// Example: "ABC1234.001".
     #[endpoint(skip)]
-    id: String,
+    pub id: String,
+    /// Currency to convert summary.
+    ///
+    /// Example: "USD".
     #[endpoint(skip)]
-    currency: String,
+    pub currency: String,
 }
 
 /// A request to get the summary for the specified account and session date.
@@ -26,10 +32,19 @@ pub struct GetAccountSummary {
     response = "AccountSummary"
 )]
 pub struct GetAccountSummaryByDate {
+    /// Account ID to get summary.
+    ///
+    /// Example: "ABC1234.001".
     #[endpoint(skip)]
-    id: String,
+    pub id: String,
+    /// Session date of the account summary.
+    ///
+    /// Example: "2013-02-16".
     #[endpoint(skip)]
-    date: String,
+    pub date: String,
+    /// Currency to convert summary.
+    ///
+    /// Example: "USD".
     #[endpoint(skip)]
-    currency: String,
+    pub currency: String,
 }
