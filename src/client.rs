@@ -50,12 +50,12 @@ impl Client {
         }
     }
 
-    /// Executes endpoint.
-    pub async fn execute<E>(&self, endpoint: E) -> Result<<E as Endpoint>::Response, ClientError>
+    /// Executes request.
+    pub async fn execute<R>(&self, request: R) -> Result<<R as Endpoint>::Response, ClientError>
     where
-        E: Endpoint,
+        R: Endpoint,
     {
-        endpoint
+        request
             .with_middleware(&self.middle)
             .exec(&self.http)
             .await?
