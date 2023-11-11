@@ -37,14 +37,14 @@ pub struct GetAccountSummaryByDate {
     /// Example: "ABC1234.001".
     #[endpoint(skip)]
     pub id: String,
-    /// Session date of the account summary.
-    ///
-    /// Example: "2013-02-16".
-    #[endpoint(skip)]
-    pub date: String,
     /// Currency to convert summary.
     ///
     /// Example: "USD".
     #[endpoint(skip)]
     pub currency: String,
+    /// Session date of the account summary.
+    ///
+    /// Example: "2013-02-16".
+    #[endpoint(skip)]
+    pub date: String,
 }

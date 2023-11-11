@@ -43,7 +43,7 @@ async fn get_account_summary() {
     println!("{summary:?}");
 
     let endpoint =
-        GetAccountSummaryByDate::new(account_id, "2023-01-01".to_owned(), "USD".to_owned());
+        GetAccountSummaryByDate::new(account_id, "USD".to_owned(), "2023-01-01".to_owned());
     let summary = client.execute(endpoint).await.unwrap();
     println!("{summary:?}");
 }
