@@ -1,3 +1,8 @@
+use crate::api::account_summary::requests::{GetAccountSummary, GetAccountSummaryByDate};
+use crate::api::accounts::requests::GetUserAccounts;
+use crate::api::cross_rates::requests::{GetAvailableCurrencies, GetCrossRate};
+use crate::api::request::RequestBuilder;
+use crate::api::transactions::requests::GetTransactions;
 use crate::middleware::Middle;
 use rustify::clients::reqwest::Client as HTTPClient;
 use rustify::errors::ClientError;
@@ -55,5 +60,50 @@ impl Client {
             .exec(&self.http)
             .await?
             .parse()
+    }
+
+    /// Convenience method to make `GetUserAccounts` request.
+    pub fn get_user_accounts(&self) -> RequestBuilder<GetUserAccounts> {
+        let req = GetUserAccounts::new();
+        RequestBuilder::new(self.clone(), req)
+    }
+
+    /// Convenience method to make `GetAvailableCurrencies` request.
+    pub fn get_available_currencies(&self) -> RequestBuilder<GetAvailableCurrencies> {
+        let req = GetAvailableCurrencies::new();
+        RequestBuilder::new(self.clone(), req)
+    }
+
+    /// Convenience method to make `GetCrossRate` request.
+    pub fn get_cross_rate(&self, from: String, to: String) -> RequestBuilder<GetCrossRate> {
+        let req = GetCrossRate::new(from, to);
+        RequestBuilder::new(self.clone(), req)
+    }
+
+    /// Convenience method to make `GetAccountSummary` request.
+    pub fn get_account_summary(
+        &self,
+        account_id: String,
+        currency: String,
+    ) -> RequestBuilder<GetAccountSummary> {
+        let req = GetAccountSummary::new(account_id, currency);
+        RequestBuilder::new(self.clone(), req)
+    }
+
+    /// Convenience method to make `GetAccountSummaryByDate` request.
+    pub fn get_account_summary_by_date(
+        &self,
+        account_id: String,
+        currency: String,
+        date: String,
+    ) -> RequestBuilder<GetAccountSummaryByDate> {
+        let req = GetAccountSummaryByDate::new(account_id, currency, date);
+        RequestBuilder::new(self.clone(), req)
+    }
+
+    /// Convenience method to make `GetTransactions` request.
+    pub fn get_transactions(&self) -> RequestBuilder<GetTransactions> {
+        let req = GetTransactions::new();
+        RequestBuilder::new(self.clone(), req)
     }
 }
